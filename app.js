@@ -154,7 +154,7 @@ app.patch("/oogiri/place/b/:id", async (req, res) => {
 app.get("/oogiri/vote/a/:id", async (req, res) => {
     const { id } = req.params;
     const themes = await Theme.findById(id);
-    const products = await Joke.find({theme: themes.theme});
+    // const products = await Joke.find({theme: themes.theme});
     const votedProducts = await Vote.find({theme: themes.theme});
     function shuffle(array) {
         for (let t = array.length - 1; t >= 0; t--) {
@@ -163,9 +163,9 @@ app.get("/oogiri/vote/a/:id", async (req, res) => {
         }
         return array;
     }
-    const shuffleProduct = shuffle(products);
-    await Joke.deleteMany({});
-    await Joke.insertMany(shuffleProduct);
+    const shuffleProduct = shuffle(votedProducts);
+    await Vote.deleteMany({});
+    await Vote.insertMany(shuffleProduct);
     res.render("ogiri/vote", { shuffleProduct, votedProducts, themes });
 });
 
@@ -202,7 +202,7 @@ app.get("/oogiri/vote/b/:id", async (req, res) => {
     const { id } = req.params;
     const titles = await Title.findById(id);
     const polledProducts = await Poll.find({title: titles.title});
-    const products = await Work.find({title: titles.title});
+    // const products = await Work.find({title: titles.title});
     function shuffle(array) {
         for (let t = array.length - 1; t >= 0; t--) {
             const randomCount = Math.floor((Math.random() * (t + 1)));
@@ -210,9 +210,9 @@ app.get("/oogiri/vote/b/:id", async (req, res) => {
         }
         return array;
     }
-    const shuffleProduct = shuffle(products);
-    await Work.deleteMany({});
-    await Work.insertMany(shuffleProduct);
+    const shuffleProduct = shuffle(polledProducts);
+    await Poll.deleteMany({});
+    await Poll.insertMany(shuffleProduct);
     res.render("ogiri/voteb", { shuffleProduct, polledProducts, titles });
 });
 
