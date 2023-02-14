@@ -133,3 +133,8 @@ button:hover {
   color: rgba(0, 0, 0, 0.5);
 }
 
+@media screen and ( max-width: 570px) {
+.small-size {
+    font-size: 5px;
+  }
+}
