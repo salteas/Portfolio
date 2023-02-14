@@ -299,8 +299,6 @@ app.get("/admin/titlecast", (req, res) => {
 
 app.post("/admin/titlecast", async (req, res) => {
     const { theme, title } = req.body;
-    console.log(theme);
-    console.log(title);
     const themes = new Theme({ theme });
     await themes.save();
     const titles = new Title({ title, });
