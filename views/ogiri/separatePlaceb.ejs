@@ -1,0 +1,56 @@
+<% layout("layouts/boilerplate") %>
+    <% if(messages && messages.length) { %>
+        <div class="alert alert-primary alert-dismissible fade show" role="alert">
+            <%= messages %>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        <% } %>
+            <h1>投稿してください</h1>
+
+            <div class="card m-auto mt-4 mb-5 shadow bg-body rounded">
+                <h5 class="ms-4 mt-4">お題B（2単語指定）</h5>
+                <div class="mt-5 mb-5 m-auto text-center">
+                    <h3 class="m-auto mt-3 ps-4 pe-4 ps-lg-2 pe-lg-2"><%= titles.title %></h3>
+                </div>
+                <ul>
+                    <li>1人1ボケ投稿できます</li>
+                    <li>すでに投稿している場合、後から投稿されたボケが採用されます</li>
+                    <li>投稿後は参加の取り消しができません</li>
+                </ul>
+                <div class="mt-2 mb-2 ps-3 pe-3">
+                    <form action="/oogiri/place/b/<%= titles._id %>?_method=PATCH" method="POST" novalidate class="needs-validation">
+                        <div class="mb-2">
+                            <label class="ms-2" for="username">名前：</label>
+                            <input class="form-control" type="text" name="username" id="username"
+                                placeholder="名前を入力してください" required>
+                            <div class="invalid-feedback">
+                                名前が入力されていません
+                            </div>
+                        </div>
+                        <div class="mb-2">
+                            <label class="ms-2" for="joke">ボケ：</label>
+                            <textarea class="form-control" name="joke" id="joke" placeholder="最大200文字まで入力できます" cols="80"
+                                rows="3" required></textarea>
+                            <div class="invalid-feedback">
+                                ボケが入力されていません
+                            </div>
+                        </div>
+                        <div class="pt-2 mb-2 text-center">
+                            <button class="btn btn-dark">投稿する</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">投稿していただいた方</h5>
+                    <p class="card-text">
+                        <% for(let work of works) { %>
+                            <%= work.username %> /
+                                <% } %>
+                    </p>
+                    <div class="mt-1 text-center">
+                        <p>
+                            <%= works.length %>人
+                        </p>
+                    </div>
+                </div>
+            </div>

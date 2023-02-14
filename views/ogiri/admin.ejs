@@ -1,0 +1,16 @@
+<% layout("layouts/boilerplate") %>
+
+    <h2>お題の追加</h2>
+<div>
+    <form action="/admin/titlecast" method="POST">
+        <div class="col10 mt-4">
+            <label for="theme">お題A（1単語＋状況指定）</label>
+            <input type="text" name="theme" placeholder="お題A" id="theme">
+        </div>
+        <div class="col10 mt-4 mb-4">
+            <label for="title">お題B（2単語指定）</label>
+            <input type="text" name="title" placeholder="お題B" id="title">
+        </div>
+        <button>追加</button>
+    </form>
+</div>

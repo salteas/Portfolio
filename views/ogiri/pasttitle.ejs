@@ -1,0 +1,38 @@
+<% layout("layouts/boilerplate") %>
+
+    <div class="card m-auto mt-4 mb-5 bg-light shadow bg-body rounded" style="width: 90%;">
+        <div class="row mt-3">
+                <div class="col-2 text-center">
+                    <p>回</p>
+                </div>
+                <div class="col-10 text-center">
+                    <p>お題</p>
+                </div>
+            <% for(let i = 0; i < pastThemes.length; i ++) { %>
+                <div class="col-2 text-center">
+                    <p>A<%= parseInt([i]) + 1 %></p>
+                </div>
+                <div class="col-10 text-center">
+                    <p><a class="resultLink" href="/oogiri/result/a/<%= pastThemes[i]._id %>"><%= pastThemes[i].theme %></a></p>
+                </div>
+                <% } %>
+        </div>
+    </div> 
+    <div class="card m-auto mt-4 mb-5 bg-light shadow bg-body rounded" style="width: 90%;">
+        <div class="row mt-3">
+                <div class="col-2 text-center">
+                    <p>回</p>
+                </div>
+                <div class="col-10 text-center">
+                    <p>お題</p>
+                </div>
+        <% for(let i = 0; i < pastTitles.length; i ++) { %>
+                <div class="col-2 text-center">
+                    <p>B<%= parseInt([i]) + 1 %></p>
+                </div>
+                <div class="col-10 text-center">
+                    <p><a class="resultLink" href="/oogiri/result/b/<%= pastTitles[i]._id %>"><%= pastTitles[i].title %></a></p>
+                </div>
+                <% } %>
+        </div>
+    </div> 

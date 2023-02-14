@@ -1,0 +1,156 @@
+<% layout("layouts/boilerplate") %>
+    <h2>結果発表</h2>
+    <div class="card m-auto mt-4 shadow bg-body rounded" style="width: 100%;">
+        <div class="mt-5 mb-5 m-auto">
+            <h5 class="card-title ps-3 pe-3 ps-lg-2 pe-lg-2">お題A</h5>
+            <h3 class="m-auto mt-3 ps-4 pe-4 ps-lg-2 pe-lg-2 text-center"><%= themes.theme %></h3>
+        </div>
+        <div class="card-body bg-light">
+            <h5 class="card-title">投稿者：<%= sortLists.length %>人</h5>
+            <h5 class="card-title">投票者：<%= sortLists[0].votedpoints.length %>人</h5>
+            <h5 class="card-title">得票数の数字をタップすると詳細が見られます</h5>
+        </div>
+    </div>
+    <div class="card m-auto mt-4 mb-4 bg-light shadow bg-body rounded" style="width: 100%;">
+        <div class="mt-3">
+            <div class="row">
+                <div class="col-2 col-sm-1 text-center">
+                    <p>順位</p>
+                </div>
+                <div class="col-2 col-sm-1 text-center">
+                    <p>得票数</p>
+                </div>
+                <div class="col-5 col-sm-7 text-center">
+                    <p>ボケ</p>
+                </div>
+                <div class="col-1 text-center">
+                    <p>2票</p>
+                </div>
+                <div class="col-1 text-center">
+                    <p>3票</p>
+                </div>
+                <div class="col-1 text-center">
+                    <p>4票</p>
+                </div>
+            </div>
+        </div>
+        <% let i=1; for (let sortList of sortLists) { 
+            
+            if(i === 1){ %>
+                <div class="border">
+                <div class="row">
+                    <div class="col-2 col-sm-1 text-center pt-3 top">
+                        <%= i%>位
+                    </div>
+                    <div class="col-2 col-sm-1 text-center pt-3 top">
+                        <a href="/oogiri/result/a/user/<%=sortList._id%>" class="resultLinktop"><%= sortList.point%></a>
+                    </div>
+                    <div class="col-5 col-sm-7 text-center pt-3 top">
+                        <p>
+                            <%= sortList.joke%>
+                            <br><span style="color: black;">（<%= sortList.username%>）</span>
+                        </p>
+                    </div>
+                    <div class="col-1 text-center pt-3 top">
+                        <% const filter2 = sortList.votedpoints.filter((num) => num.votepoint === 2);%>
+                        <%= filter2.length %> 
+                    </div>
+                    <div class="col-1 text-center pt-3 top">
+                        <% const filter3 = sortList.votedpoints.filter((num) => num.votepoint === 3);%>
+                        <%= filter3.length %> 
+                    </div>
+                    <div class="col-1 text-center pt-3 top">
+                        <% const filter4 = sortList.votedpoints.filter((num) => num.votepoint === 4);%>
+                        <%= filter4.length %> 
+                    </div>
+                </div>
+            </div>
+                <% } else if (i === 2) { %>
+                    <div class="border">
+                <div class="row">
+                    <div class="col-2 col-sm-1 text-center pt-3 second">
+                        <%= i%>位
+                    </div>
+                    <div class="col-2 col-sm-1 text-center pt-3 second">
+                        <a href="/oogiri/result/a/user/<%=sortList._id%>" class="resultLinksecond"><%= sortList.point%></a>
+                    </div>
+                    <div class="col-5 col-sm-7 text-center pt-3 second">
+                        <p>
+                            <%= sortList.joke%>
+                            <br><span style="color: black;">（<%= sortList.username%>）</span>
+                        </p>
+                    </div>
+                    <div class="col-1 text-center pt-3 second">
+                        <% const filter2 = sortList.votedpoints.filter((num) => num.votepoint === 2);%>
+                        <%= filter2.length %> 
+                    </div>
+                    <div class="col-1 text-center pt-3 second">
+                        <% const filter3 = sortList.votedpoints.filter((num) => num.votepoint === 3);%>
+                        <%= filter3.length %> 
+                    </div>
+                    <div class="col-1 text-center pt-3 second">
+                        <% const filter4 = sortList.votedpoints.filter((num) => num.votepoint === 4);%>
+                        <%= filter4.length %> 
+                    </div>
+                </div>
+            </div>
+                <% } else if (i === 3) { %> 
+                    <div class="border">
+                <div class="row">
+                    <div class="col-2 col-sm-1 text-center pt-3 third">
+                        <%= i%>位
+                    </div>
+                    <div class="col-2 col-sm-1 text-center pt-3 third">
+                        <a href="/oogiri/result/a/user/<%=sortList._id%>" class="resultLinkthird"><%= sortList.point%></a>
+                    </div>
+                    <div class="col-5 col-sm-7 text-center pt-3 third">
+                        <p>
+                            <%= sortList.joke%>
+                            <br><span style="color: black;">（<%= sortList.username%>）</span>
+                        </p>
+                    </div>
+                    <div class="col-1 text-center pt-3 third">
+                        <% const filter2 = sortList.votedpoints.filter((num) => num.votepoint === 2);%>
+                        <%= filter2.length %> 
+                    </div>
+                    <div class="col-1 text-center pt-3 third">
+                        <% const filter3 = sortList.votedpoints.filter((num) => num.votepoint === 3);%>
+                        <%= filter3.length %> 
+                    </div>
+                    <div class="col-1 text-center pt-3 third">
+                        <% const filter4 = sortList.votedpoints.filter((num) => num.votepoint === 4);%>
+                        <%= filter4.length %> 
+                    </div>
+                </div>
+            </div>
+                <% } else { %>
+            <div class="border">
+                <div class="row">
+                    <div class="col-2 col-sm-1 text-center pt-3">
+                        <%= i%>位
+                    </div>
+                    <div class="col-2 col-sm-1 text-center pt-3">
+                        <a href="/oogiri/result/a/user/<%=sortList._id%>" class="resultLink"><%= sortList.point%></a>
+                    </div>
+                    <div class="col-5 col-sm-7 text-center pt-3">
+                        <p>
+                            <%= sortList.joke%>
+                            <br>（<%= sortList.username%>）
+                        </p>
+                    </div>
+                    <div class="col-1 text-center pt-3">
+                        <% const filter2 = sortList.votedpoints.filter((num) => num.votepoint === 2);%>
+                        <%= filter2.length %> 
+                    </div>
+                    <div class="col-1 text-center pt-3">
+                        <% const filter3 = sortList.votedpoints.filter((num) => num.votepoint === 3);%>
+                        <%= filter3.length %> 
+                    </div>
+                    <div class="col-1 text-center pt-3">
+                        <% const filter4 = sortList.votedpoints.filter((num) => num.votepoint === 4);%>
+                        <%= filter4.length %> 
+                    </div>
+                </div>
+            </div>
+                <% } i +=1; } %>
+    </div>
