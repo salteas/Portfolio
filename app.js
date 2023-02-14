@@ -14,9 +14,7 @@ const flash = require("connect-flash");
 const ExpressError = require("./utils/ExpressError");
 // const flash = require("connect-flash");
 
-const Joke = require("./models/product");
 const Vote = require("./models/votedProducts");
-const Work = require("./models/work");
 const Poll = require("./models/votedWorks");
 const Theme = require("./models/theme");
 const Title = require("./models/title");
@@ -89,15 +87,15 @@ app.get("/oogiri/place/a/:id", async (req, res) => {
 
     const { id } = req.params;
     const themes = await Theme.findById(id);
-    const jokes = await Joke.find({theme: themes.theme});
-    res.render("ogiri/separatePlace", { jokes, themes, messages: req.flash("success") });
+    const votes = await Vote.find({theme: themes.theme});
+    res.render("ogiri/separatePlace", { votes, themes, messages: req.flash("success") });
 });
 
 app.get("/oogiri/place/b/:id", async (req, res) => {
     const { id } = req.params;
     const titles = await Title.findById(id);
-    const works = await Work.find({title: titles.title});
-    res.render("ogiri/separatePlaceb", { works, titles, messages: req.flash("success") });
+    const polls = await Poll.find({title: titles.title});
+    res.render("ogiri/separatePlaceb", { polls, titles, messages: req.flash("success") });
 });
 
 
@@ -111,13 +109,10 @@ app.patch("/oogiri/place/a/:id", async (req, res) => {
         joinUserName.push(votedProduct.username);
     }
     if (joinUserName.includes(username)) {
-        await Joke.findOneAndUpdate({ username: username, theme: themes.theme }, { joke: joke });
         await Vote.findOneAndUpdate({ username: username, theme: themes.theme }, { joke: joke });
         req.flash("success", "投稿内容が変更されました");
         res.redirect("/");
     } else {
-        const products = new Joke({ username, joke, theme: themes.theme });
-        await products.save();
         const votedProducts = new Vote({ username, joke, theme: themes.theme });
         await votedProducts.save();
 
@@ -136,13 +131,10 @@ app.patch("/oogiri/place/b/:id", async (req, res) => {
         joinUserName.push(polledProduct.username);
     }
     if (joinUserName.includes(username)) {
-        await Work.findOneAndUpdate({ username: username, title: titles.title }, { joke: joke });
         await Poll.findOneAndUpdate({ username: username, title: titles.title }, { joke: joke });
         req.flash("success", "投稿内容が変更されました");
         res.redirect("/");
     } else {
-        const products = new Work({ username, joke, title: titles.title });
-        await products.save();
         const polledProducts = new Poll({ username, joke, title: titles.title });
         await polledProducts.save();
 
@@ -154,7 +146,6 @@ app.patch("/oogiri/place/b/:id", async (req, res) => {
 app.get("/oogiri/vote/a/:id", async (req, res) => {
     const { id } = req.params;
     const themes = await Theme.findById(id);
-    // const products = await Joke.find({theme: themes.theme});
     const votedProducts = await Vote.find({theme: themes.theme});
     function shuffle(array) {
         for (let t = array.length - 1; t >= 0; t--) {
@@ -202,7 +193,6 @@ app.get("/oogiri/vote/b/:id", async (req, res) => {
     const { id } = req.params;
     const titles = await Title.findById(id);
     const polledProducts = await Poll.find({title: titles.title});
-    // const products = await Work.find({title: titles.title});
     function shuffle(array) {
         for (let t = array.length - 1; t >= 0; t--) {
             const randomCount = Math.floor((Math.random() * (t + 1)));
