@@ -311,6 +311,8 @@ app.all("*", (req, res, next) => {
     next(new ExpressError("ページが見つかりませんでした", 404));
 });
 
-app.listen(3000, () => {
-    console.log("ポート3000で待機中");
+const port = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+    console.log(`ポート${PORT}で待機中`);
 });
