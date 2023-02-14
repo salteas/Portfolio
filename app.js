@@ -313,6 +313,6 @@ app.all("*", (req, res, next) => {
 
 const port = process.env.PORT || 3000;
 
-app.listen(PORT, () => {
-    console.log(`ポート${PORT}で待機中`);
+app.listen(port, () => {
+    console.log(`ポート${port}で待機中`);
 });
