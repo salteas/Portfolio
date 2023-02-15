@@ -155,7 +155,6 @@ button:hover {
   .left-content-text {
     display: inline-block;
     position:relative;
-
     width: 72%;
   }
 
@@ -175,8 +174,5 @@ button:hover {
     font-size: 12px;
     font-weight: bold;
     position: relative;
-    top: 50%;
-    -webkit-transform : translateY(-50%);
-    transform : translateY(-50%);
   }
 }
