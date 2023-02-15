@@ -42,7 +42,7 @@ button:hover {
 }
 
 .content-area {
-  width: 97%;
+  width: 95%;
 }
 
 .left-content-text {
@@ -164,6 +164,7 @@ li {
   }
 
   .p-font-joke {
-    font-size: 11px;
+    font-size: 12px;
+    vertical-align: middle;
   }
 }
