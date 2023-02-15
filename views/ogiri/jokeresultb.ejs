@@ -7,8 +7,8 @@
             <p class="m-auto mt-3 ps-2 pe-2 ps-lg-1 pe-lg-1 p-font-title text-center"><b><%= user.title %></b></p>
         </div>
         <div class="card-body bg-light">
-            <h5 class="card-title">投稿者：<%= allUser.length %>人</h5>
-            <h5 class="card-title">投票者：<%= user.votedpoints.length %>人</h5>
+            <p class="card-title p-font"><b>投稿者：<%= allUser.length %>人</b></p>
+            <p class="card-title p-font"><b>投票者：<%= user.votedpoints.length %>人</b></p>
         </div>
     </div>
     <div class="card m-auto mt-4 shadow bg-body rounded" style="width: 90%;">
@@ -37,10 +37,10 @@
             <% const voters = user.votedpoints.filter((num) => num.votepoint !==0);
             for(let voter of voters) {  %>
                 <div class="col-2 text-center">
-                <p><%= voter.votepoint %>点</p>
+                <p class="p-font"><%= voter.votepoint %>点</p>
             </div>
             <div class="col-10 text-center">
-                <p><%= voter.voteuser %></p>
+                <p class="p-font"><%= voter.voteuser %></p>
             </div>
             <% } %> 
         </div>
