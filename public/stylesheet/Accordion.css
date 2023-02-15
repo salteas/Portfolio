@@ -41,6 +41,10 @@ button:hover {
   text-align: center;
 }
 
+.content-area {
+  width: 97%;
+}
+
 .left-content-text {
   display: inline-block;
   width: 80%;
@@ -157,5 +161,9 @@ li {
 
   .p-font-title {
     font-size: 18px;
+  }
+
+  .p-font-joke {
+    font-size: 11px;
   }
 }
