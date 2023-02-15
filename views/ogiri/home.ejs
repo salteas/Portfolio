@@ -1,63 +1,71 @@
 <% layout("layouts/boilerplate") %>
-<% if(messages && messages.length) { %>
-    <div class="alert alert-primary alert-dismissible fade show" role="alert">
-        <%= messages %>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-    <% } %>
-    <% if(error && error.length) { %>
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            <%= error %>
+    <% if(messages && messages.length) { %>
+        <div class="alert alert-primary alert-dismissible fade show" role="alert">
+            <%= messages %>
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
         <% } %>
-
-    <h2>作文お題専用の大喜利サイトです</h2>
-    <div class="accordion col-lg-7 col-sm-10 col-12 m-auto mt-4" id="accordionExample">
-        <div class="accordion-item">
-            <h3 class="accordion-header" id="headingOne">
-                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
-                    aria-expanded="true" aria-controls="collapseOne">
-                    ルール
-                </button>
-            </h3>
-            <div id="collapseOne" class="accordion-collapse collapse show " aria-labelledby="headingOne"
-                data-bs-parent="#accordionExample">
-                <div class="accordion-body">
-                    <ul>
-                        <li>投稿期間：<b style="color: #ff5e24;">未定</b></li>
-                        <li>投票期間：<b style="color: #ff5e24;">未定</b></li>
-                        <li>投稿できるボケ：<b style="color: #ff5e24;">1個</b></li>
-                        <li class="pe-1"><b style="color: #ff5e24;">指定された単語を必ず使用してください</b></li>
-                        <li>A,Bどちらか片方のお題に参加できます</li>
-                        <li>参加していない方のお題に投票してください</li>
-                        <li><b style="color: #ff5e24;">現在はテストプレイ用の時間で回しています</b></li>
-                    </ul>
+            <% if(error && error.length) { %>
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <%= error %>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
-            </div>
-        </div>
-    </div>
+                <% } %>
 
-    <h2>直近のお題</h2>
-    <p class="text-center"><b style="color: #ff5e24;">投稿：2月15日 20:00締切</b></p>
-    <p class="text-center"><b style="color: #ff5e24;">投票：2月17日 20:00締切</b></p>
+                    <h2>作文お題専用の大喜利サイトです</h2>
+                    <div class="accordion col-lg-7 col-sm-10 col-12 m-auto mt-4" id="accordionExample">
+                        <div class="accordion-item">
+                            <h3 class="accordion-header" id="headingOne">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    ルール
+                                </button>
+                            </h3>
+                            <div id="collapseOne" class="accordion-collapse collapse show " aria-labelledby="headingOne"
+                                data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <ul>
+                                        <li>投稿期間：<b style="color: #ff5e24;">未定</b></li>
+                                        <li>投票期間：<b style="color: #ff5e24;">未定</b></li>
+                                        <li>投稿できるボケ：<b style="color: #ff5e24;">1個</b></li>
+                                        <li class="pe-1"><b style="color: #ff5e24;">指定された単語を必ず使用してください</b></li>
+                                        <li>A,Bどちらか片方のお題に参加できます</li>
+                                        <li>参加していない方のお題に投票してください</li>
+                                        <li><b style="color: #ff5e24;">現在はテストプレイ用の時間で回しています</b></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-    <div class="card mt-3 shadow bg-body rounded m-auto col-sm-10 col-11">
-            <p class="ms-4 mt-4 p-font"><b>お題A（1単語＋状況・感情指定）</b></p>
-        <div class="mt-3 mb-5 m-auto text-center">
-            <h4 class="m-auto mt-3 ps-4 pe-4 ps-lg-2 pe-lg-2"><%= themes[0].theme %></h4>
-        </div>
-        <div class="mt-1 mb-4 text-center">
-            <a class="join-link m-auto" href="/oogiri/place/a/<%= themes[0]._id %>" ><span data-text="参加する">参加する</span></a>
-        </div>
-    </div>
+                    <h2>直近のお題</h2>
+                    <p class="text-center"><b style="color: #ff5e24;">投稿：2月15日 20:00締切</b></p>
+                    <p class="text-center"><b style="color: #ff5e24;">投票：2月17日 20:00締切</b></p>
 
-    <div class="card m-auto mt-4 mb-5 shadow bg-body rounded col-sm-10 col-11">
-        <p class="ms-4 mt-4 p-font"><b>お題B（2単語指定）</b></p>
-        <div class="mt-3 mb-5 m-auto text-center">
-            <h4 class="m-auto mt-3 ps-4 pe-4 ps-lg-2 pe-lg-2"><%= titles[0].title %></h4>
-        </div>
-        <div class="mt-1 mb-4 text-center">
-            <a class="join-link m-auto" href="/oogiri/place/b/<%= titles[0]._id %>"><span data-text="参加する">参加する</span></a>
-        </div>
-    </div>
+                    <div class="card mt-3 shadow bg-body rounded m-auto col-sm-10 col-11">
+                        <p class="ms-4 mt-4 p-font"><b>お題A（1単語＋状況・感情指定）</b></p>
+                        <div class="mt-3 mb-5 m-auto text-center">
+                            <h5 class="m-auto mt-3 ps-2 pe-2 ps-lg-1 pe-lg-1">
+                                <%= themes[0].theme %>
+                            </h5>
+                        </div>
+                        <div class="mt-1 mb-4 text-center">
+                            <a class="join-link m-auto" href="/oogiri/place/a/<%= themes[0]._id %>"><span
+                                    data-text="参加する">参加する</span></a>
+                            <a class="vote-link m-auto" href="/oogiri/vote/a/<%= themes[0]._id %>">投票する</a>
+                            <a class="vote-link m-auto" href="/oogiri/result/a/<%= themes[0]._id %>">結果</a>
+                        </div>
+                    </div>
+
+                    <div class="card m-auto mt-4 mb-5 shadow bg-body rounded col-sm-10 col-11">
+                        <p class="ms-4 mt-4 p-font"><b>お題B（2単語指定）</b></p>
+                        <div class="mt-3 mb-5 m-auto text-center">
+                            <h4 class="m-auto mt-3 ps-2 pe-2 ps-lg-1 pe-lg-1">
+                                <%= titles[0].title %>
+                            </h4>
+                        </div>
+                        <div class="mt-1 mb-4 text-center">
+                            <a class="join-link m-auto" href="/oogiri/place/b/<%= titles[0]._id %>"><span
+                                    data-text="参加する">参加する</span></a>
+                        </div>
+                    </div>
