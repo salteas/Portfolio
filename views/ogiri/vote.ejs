@@ -2,7 +2,9 @@
     <div class="card m-auto mt-4 shadow bg-body rounded" style="width: 100%;">
         <div class="mt-4 mb-5 m-auto">
             <p class="card-title ps-3 pe-3 ps-lg-2 pe-lg-2 p-font"><b>お題A</b></p>
-            <p class="m-auto mt-2 ps-2 pe-2 ps-lg-1 pe-lg-1 p-font-title text-center"><b><%= themes.theme %></b></p>
+            <p class="m-auto mt-2 ps-2 pe-2 ps-lg-1 pe-lg-1 p-font-title text-center"><b>
+                    <%= themes.theme %>
+                </b></p>
         </div>
         <ul>
             <li>各ボケに対して0,2,3,4を選択できます</li>
@@ -10,7 +12,8 @@
             <li>投票の内容は後から更新できません</li>
         </ul>
         <div class="mt-2 mb-2">
-            <form action="/oogiri/vote/a/<%= themes._id %>?_method=PATCH" method="POST" novalidate class="needs-validation">
+            <form action="/oogiri/vote/a/<%= themes._id %>?_method=PATCH" method="POST" novalidate
+                class="needs-validation">
                 <div class="mt-1 ms-2 me-2">
                     <div class="left">
                         <p class="left-content p-font-joke">０票</p>
@@ -27,29 +30,21 @@
                         <div class="mt-1 ms-2 me-2 mb-1">
                             <div class="left">
                                 <div class="left-content">
-                                    <div class="content-area">
-                                        <input type="radio" value="0" name="votepoint<%=[i]%>" id="no" checked>
-                                    </div>
+                                    <input type="radio" value="0" name="votepoint<%=[i]%>" id="no" checked>
                                 </div>
                                 <div class="left-content">
-                                    <div class="content-area">
-                                        <input type="radio" value="2" name="votepoint<%=[i]%>" id="low">
-                                    </div>
+                                    <input type="radio" value="2" name="votepoint<%=[i]%>" id="low">
                                 </div>
                                 <div class="left-content">
-                                    <div class="content-area">
-                                        <input type="radio" value="3" name="votepoint<%=[i]%>" id="middle">
-                                    </div>
+                                    <input type="radio" value="3" name="votepoint<%=[i]%>" id="middle">
                                 </div>
                                 <div class="left-content">
-                                    <div class="content-area">
-                                        <input type="radio" value="4" name="votepoint<%=[i]%>" id="high">
-                                    </div>
+                                    <input type="radio" value="4" name="votepoint<%=[i]%>" id="high">
                                 </div>
                                 <div class="left-content-text ps-3">
-                                    <p class="p-font-joke"><b>
+                                    <p class="p-font-joke">
                                         <%= shuffleProduct[i].joke %>
-                                    </b></p>
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -58,13 +53,14 @@
                             <div class="mt-2 mb-2 pt-3 pb-1 text-center bg-dark text-light">
                                 <p>名前を入れて投票！</p>
                             </div>
-                                <div class="mb-2 ps-2 pe-2 col-8">
-                                    <label class="ms-2" for="username">名前：</label>
-                                    <input class="form-control" type="text" name="username" id="username" placeholder="名前を入力してください" required>
-                                    <div class="invalid-feedback">
-                                        <p>名前が入力されていません</p>
-                                    </div>
+                            <div class="mb-2 ps-2 pe-2 col-8">
+                                <label class="ms-2" for="username">名前：</label>
+                                <input class="form-control" type="text" name="username" id="username"
+                                    placeholder="名前を入力してください" required>
+                                <div class="invalid-feedback">
+                                    <p>名前が入力されていません</p>
                                 </div>
+                            </div>
                             <div class="mt-1 text-center">
                                 <button class="btn btn-dark">投票する</button>
                             </div>
@@ -75,9 +71,7 @@
 
             <h5 class="card-title">投票していただいた方</h5>
             <p class="card-text">
-                <% const voteusers=votedProducts[0].votedpoints; 
-                
-                for(let voteuser of voteusers) { %>
+                <% const voteusers=votedProducts[0].votedpoints; for(let voteuser of voteusers) { %>
                     <%= voteuser.voteuser %> /
                         <% } %>
             </p>
@@ -96,65 +90,62 @@
         </div>
         <% votedProducts.sort(function(a,b) { if(a.point> b.point) {
             return -1;
-            } else if (a.point < b.point) { return 1; } else { return 0; } }); 
-            let i=1; for (let votedProduct of
-                votedProducts) { 
-                    if(i === 1) { %>
-                        <div class="mt-3">
-                    <div class="left">
-                        <p class="col-2 col-sm-1 text-center top"><b>
-                            <%= i%>位
-                        </b></p>
-                        <p class="col-2 col-sm-1 text-center top"><b>
-                            <%= votedProduct.point%>
-                        </b></p>
-                        <p class="col-8 col-sm-10 text-center top"><b>
-                            <%= votedProduct.username%>
-                        </b></p>
-                    </div>
-                </div>
-                        <% } else if (i === 2) {%>
-                            <div class="mt-3">
-                    <div class="left">
-                        <p class="col-2 col-sm-1 text-center second"><b>
-                            <%= i%>位
-                        </b></p>
-                        <p class="col-2 col-sm-1 text-center second"><b>
-                            <%= votedProduct.point%>
-                        </b></p>
-                        <p class="col-8 col-sm-10 text-center second"><b>
-                            <%= votedProduct.username%>
-                        </b></p>
-                    </div>
-                </div>
-                        <% } else if(i === 3){%>
-                            <div class="mt-3">
-                    <div class="left">
-                        <p class="col-2 col-sm-1 text-center third"><b>
-                            <%= i%>位
-                        </b></p>
-                        <p class="col-2 col-sm-1 text-center third"><b>
-                            <%= votedProduct.point%>
-                        </b></p>
-                        <p class="col-8 col-sm-10 text-center third"><b>
-                            <%= votedProduct.username%>
-                        </b></p>
-                    </div>
-                </div>
-                        <% } else {%>
+            } else if (a.point < b.point) { return 1; } else { return 0; } }); let i=1; for (let votedProduct of
+                votedProducts) { if(i===1) { %>
                 <div class="mt-3">
                     <div class="left">
-                        <p class="col-2 col-sm-1 text-center">
-                            <%= i%>位
-                        </p>
-                        <p class="col-2 col-sm-1 text-center">
-                            <%= votedProduct.point%>
-                        </p>
-                        <p class="col-8 col-sm-10 text-center">
-                            <%= votedProduct.username%>
-                        </p>
+                        <p class="col-2 col-sm-1 text-center top"><b>
+                                <%= i%>位
+                            </b></p>
+                        <p class="col-2 col-sm-1 text-center top"><b>
+                                <%= votedProduct.point%>
+                            </b></p>
+                        <p class="col-8 col-sm-10 text-center top"><b>
+                                <%= votedProduct.username%>
+                            </b></p>
                     </div>
                 </div>
-                <%} i +=1; } %>
+                <% } else if (i===2) {%>
+                    <div class="mt-3">
+                        <div class="left">
+                            <p class="col-2 col-sm-1 text-center second"><b>
+                                    <%= i%>位
+                                </b></p>
+                            <p class="col-2 col-sm-1 text-center second"><b>
+                                    <%= votedProduct.point%>
+                                </b></p>
+                            <p class="col-8 col-sm-10 text-center second"><b>
+                                    <%= votedProduct.username%>
+                                </b></p>
+                        </div>
+                    </div>
+                    <% } else if(i===3){%>
+                        <div class="mt-3">
+                            <div class="left">
+                                <p class="col-2 col-sm-1 text-center third"><b>
+                                        <%= i%>位
+                                    </b></p>
+                                <p class="col-2 col-sm-1 text-center third"><b>
+                                        <%= votedProduct.point%>
+                                    </b></p>
+                                <p class="col-8 col-sm-10 text-center third"><b>
+                                        <%= votedProduct.username%>
+                                    </b></p>
+                            </div>
+                        </div>
+                        <% } else {%>
+                            <div class="mt-3">
+                                <div class="left">
+                                    <p class="col-2 col-sm-1 text-center">
+                                        <%= i%>位
+                                    </p>
+                                    <p class="col-2 col-sm-1 text-center">
+                                        <%= votedProduct.point%>
+                                    </p>
+                                    <p class="col-8 col-sm-10 text-center">
+                                        <%= votedProduct.username%>
+                                    </p>
+                                </div>
+                            </div>
+                            <%} i +=1; } %>
     </div>
-    
