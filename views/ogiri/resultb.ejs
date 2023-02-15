@@ -1,14 +1,14 @@
 <% layout("layouts/boilerplate") %>
     <h2>結果発表</h2>
     <div class="card m-auto mt-4 shadow bg-body rounded" style="width: 100%;">
-        <div class="mt-5 mb-5 m-auto">
-            <p class="card-title ps-3 pe-3 ps-lg-2 pe-lg-2 p-font">お題B</p>
-            <h3 class="m-auto mt-3 ps-2 pe-2 ps-lg-1 pe-lg-1 text-center"><%= titles.title %></h3>
+        <div class="mt-4 mb-4 m-auto">
+            <p class="card-title ps-3 pe-3 ps-lg-2 pe-lg-2 p-font"><b>お題B</b></p>
+            <p class="m-auto mt-3 ps-2 pe-2 ps-lg-1 pe-lg-1 p-font-title text-center"><b><%= titles.title %></b></p>
         </div>
         <div class="card-body bg-light">
-            <h5 class="card-title">投稿者：<%= sortLists.length %>人</h5>
-            <h5 class="card-title">投票者：<%= sortLists[0].votedpoints.length %>人</h5>
-            <p class="card-title"><b>得票数の数字をタップすると詳細が見られます</b></p>
+            <p class="card-title p-font"><b>投稿者：<%= sortLists.length %>人</b></p>
+            <p class="card-title p-font"><b>投票者：<%= sortLists[0].votedpoints.length %>人</b></p>
+            <p class="card-title p-font"><b>得票数の数字をタップすると詳細が見られます</b></p>
         </div>
     </div>
     <div class="card m-auto mt-4 mb-4 bg-light shadow bg-body rounded" style="width: 100%;">
