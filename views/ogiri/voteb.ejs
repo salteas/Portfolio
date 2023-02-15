@@ -13,10 +13,10 @@
             <form action="/oogiri/vote/b/<%= titles._id %>?_method=PATCH" method="POST" novalidate class="needs-validation">
                 <div class="mt-1 ms-2 me-2">
                     <div class="left">
-                        <p class="left-content">０票</p>
-                        <p class="left-content">２票</p>
-                        <p class="left-content">３票</p>
-                        <p class="left-content">４票</p>
+                        <p class="left-content p-font-joke">０票</p>
+                        <p class="left-content p-font-joke">２票</p>
+                        <p class="left-content p-font-joke">３票</p>
+                        <p class="left-content p-font-joke">４票</p>
                     </div>
                 </div>
                 <% for (let i=0; i < shuffleProduct.length; i ++) { if(i % 10===0 && i !==0){%>
@@ -39,15 +39,15 @@
                                     <input type="radio" value="4" name="votepoint<%=[i]%>" id="high">
                                 </div>
                                 <div class="left-content-text ms-2">
-                                    <span>
+                                    <p class="p-font-joke">
                                         <%= shuffleProduct[i].joke %>
-                                    </span>
+                                    </p>
                                 </div>
                             </div>
                         </div>
                         <% } %>
 
-                            <div class="mt-2 mb-2 pt-2 pb-1 text-center bg-dark text-light">
+                            <div class="mt-2 mb-2 pt-3 pb-1 text-center bg-dark text-light">
                                 <p>名前を入れて投票！</p>
                             </div>
                                 <div class="mb-2 ps-2 pe-2 col-8">
