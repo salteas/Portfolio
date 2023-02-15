@@ -7,7 +7,7 @@
                 </b></p>
         </div>
         <ul>
-            <li>各ボケに対して0,2,3,4を選択できます</li>
+            <li>各ボケに対して0票,2票,3票,4票を選択できます</li>
             <li>差をつけない投票は禁止です</li>
             <li>投票の内容は後から更新できません</li>
         </ul>
@@ -16,10 +16,10 @@
                 class="needs-validation">
                 <div class="mt-1 ms-2 me-2">
                     <div class="left">
-                        <p class="left-content p-font-joke">０票</p>
-                        <p class="left-content p-font-joke">２票</p>
-                        <p class="left-content p-font-joke">３票</p>
-                        <p class="left-content p-font-joke">４票</p>
+                        <p class="left-content p-font-joke">0</p>
+                        <p class="left-content p-font-joke">2</p>
+                        <p class="left-content p-font-joke">3</p>
+                        <p class="left-content p-font-joke">4</p>
                     </div>
                 </div>
                 <% for (let i=0; i < shuffleProduct.length; i ++) { if(i % 10===0 && i !==0){%>
@@ -70,7 +70,7 @@
         <div class="card-body">
 
             <h5 class="card-title">投票していただいた方</h5>
-            <p class="card-text">
+            <p class="card-text p-font">
                 <% const voteusers=votedProducts[0].votedpoints; for(let voteuser of voteusers) { %>
                     <%= voteuser.voteuser %> /
                         <% } %>
