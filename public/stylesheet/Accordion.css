@@ -153,8 +153,7 @@ button:hover {
   }
 
   .left-content-text {
-    display: inline-block;
-    position:relative;
+    display: inline-block;    
     width: 72%;
   }
 
@@ -173,6 +172,6 @@ button:hover {
   .p-font-joke {
     font-size: 12px;
     font-weight: bold;
-    position: relative;
+    padding-top: 5px;
   }
 }
