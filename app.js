@@ -75,7 +75,7 @@ mongoose.set('useFindAndModify', false);
 app.get("/", async (req, res) => {
     const themes = await Theme.find({});
     const titles = await Title.find({});
-    res.render("ogiri/home", { themes, titles});
+    res.render("oogiri/home", { themes, titles});
 });
 
 app.use("/oogiri", ThemesRoutes);
@@ -84,11 +84,11 @@ app.use("/oogiri", TitlesRoutes);
 app.get("/oogiri/past", async (req, res) => {
     const pastThemes = await Theme.find({});
     const pastTitles = await Title.find({});
-    res.render("ogiri/pasttitle", { pastThemes, pastTitles });
+    res.render("oogiri/pasttitle", { pastThemes, pastTitles });
 });
 
 app.get("/admin/titlecast", (req, res) => {
-    res.render("ogiri/admin");
+    res.render("oogiri/admin");
 });
 
 app.post("/admin/titlecast", async (req, res) => {

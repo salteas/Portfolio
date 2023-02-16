@@ -7,7 +7,7 @@ router.get("/place/b/:id", async (req, res) => {
     const { id } = req.params;
     const titles = await Title.findById(id);
     const polls = await Poll.find({title: titles.title});
-    res.render("ogiri/separatePlaceb", { polls, titles});
+    res.render("oogiri/contributeB", { polls, titles});
 });
 
 router.patch("/place/b/:id", async (req, res) => {
@@ -46,7 +46,7 @@ router.get("/vote/b/:id", async (req, res) => {
     const shuffleProduct = shuffle(polledProducts);
     await Poll.deleteMany({});
     await Poll.insertMany(shuffleProduct);
-    res.render("ogiri/voteb", { shuffleProduct, polledProducts, titles });
+    res.render("oogiri/voteB", { shuffleProduct, polledProducts, titles });
 });
 
 router.patch("/vote/b/:id", async (req, res) => {
@@ -87,14 +87,14 @@ router.get("/result/b/:id", async (req, res) => {
             return -1;
         } else if (a.point < b.point) { return 1; } else { return 0; }
     });
-    res.render("ogiri/resultb", { sortLists, titles });
+    res.render("oogiri/resultB", { sortLists, titles });
 });
 
 router.get("/result/b/user/:id", async (req, res) => {
     const { id } = req.params;
     const user = await Poll.findById(id);
     const allUser = await Poll.find({title: user.title});
-    res.render("ogiri/jokeresultb", { allUser, user });
+    res.render("oogiri/individualB", { allUser, user });
 });
 
 module.exports = router;

@@ -7,7 +7,7 @@ router.get("/place/a/:id", async (req, res) => {
     const { id } = req.params;
     const themes = await Theme.findById(id);
     const votes = await Vote.find({theme: themes.theme});
-    res.render("ogiri/separatePlace", { votes, themes});
+    res.render("oogiri/contributeA", { votes, themes});
 });
 
 router.patch("/place/a/:id", async (req, res) => {
@@ -46,7 +46,7 @@ router.get("/vote/a/:id", async (req, res) => {
     const shuffleProduct = shuffle(votedProducts);
     await Vote.deleteMany({});
     await Vote.insertMany(shuffleProduct);
-    res.render("ogiri/vote", { shuffleProduct, votedProducts, themes });
+    res.render("oogiri/voteA", { shuffleProduct, votedProducts, themes });
 });
 
 router.patch("/vote/a/:id", async (req, res) => {
@@ -87,14 +87,14 @@ router.get("/result/a/:id", async (req, res) => {
             return -1;
         } else if (a.point < b.point) { return 1; } else { return 0; }
     });
-    res.render("ogiri/result", { sortLists, themes });
+    res.render("oogiri/resultA", { sortLists, themes });
 });
 
 router.get("/result/a/user/:id", async (req, res) => {
     const { id } = req.params;
     const user = await Vote.findById(id);
     const allUser = await Vote.find({theme: user.theme});
-    res.render("ogiri/jokeresult", { allUser, user });
+    res.render("oogiri/individualA", { allUser, user });
 });
 
 module.exports = router;
