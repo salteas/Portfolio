@@ -38,12 +38,12 @@
             <div class="rank">
                 <div class="border">
                     <div class="row mt-3 m-auto" style="width: 97%;">
-                        <div class="col-2 col-sm-1 text-center pt-2">
+                        <div class="col-2 col-sm-1 text-center pt-3">
                             <p class="small-size">
                                 <%= i%>位
                             </p>
                         </div>
-                        <div class="col-2 col-sm-1 text-center pt-2">
+                        <div class="col-2 col-sm-1 text-center pt-3">
                             <p class="small-size"><a href="/oogiri/result/a/user/<%=sortList._id%>" class="resultLink">
                                     <%= sortList.point%>
                                 </a></p>
@@ -54,19 +54,19 @@
                                     <br>（<%= sortList.username%>）
                             </p>
                         </div>
-                        <div class="col-1 text-center pt-2">
+                        <div class="col-1 text-center pt-3">
                             <% const filter2=sortList.votedpoints.filter((num)=> num.votepoint === 2);%>
                                 <p class="small-size">
                                     <%= filter2.length %>
                                 </p>
                         </div>
-                        <div class="col-1 text-center pt-2">
+                        <div class="col-1 text-center pt-3">
                             <% const filter3=sortList.votedpoints.filter((num)=> num.votepoint === 3);%>
                                 <p class="small-size">
                                     <%= filter3.length %>
                                 </p>
                         </div>
-                        <div class="col-1 text-center pt-2">
+                        <div class="col-1 text-center pt-3">
                             <% const filter4=sortList.votedpoints.filter((num)=> num.votepoint === 4);%>
                                 <p class="small-size">
                                     <%= filter4.length %>
