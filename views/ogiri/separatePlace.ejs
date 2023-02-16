@@ -18,38 +18,4 @@
         <div class="mt-2 mb-2 ps-3 pe-3">
             <form action="/oogiri/place/a/<%= themes._id %>?_method=PATCH" method="POST" novalidate
                 class="needs-validation">
-                <div class="mb-2">
-                    <label class="ms-2" for="username">名前：</label>
-                    <input class="form-control" type="text" name="username" id="username" placeholder="名前を入力してください"
-                        required>
-                    <div class="invalid-feedback">
-                        名前が入力されていません
-                    </div>
-                </div>
-                <div class="mb-2">
-                    <label class="ms-2" for="joke">ボケ：</label>
-                    <textarea class="form-control" name="joke" id="joke" placeholder="最大200文字まで入力できます" cols="80"
-                        rows="3" required></textarea>
-                    <div class="invalid-feedback">
-                        ボケが入力されていません
-                    </div>
-                </div>
-                <div class="pt-2 mb-2 text-center">
-                    <button class="btn btn-dark">投稿する</button>
-                </div>
-            </form>
-        </div>
-        <div class="card-body">
-            <h5 class="card-title">投稿していただいた方</h5>
-            <p class="card-text p-font">
-                <% for(let vote of votes) { %>
-                    <%= vote.username %> /
-                        <% } %>
-            </p>
-            <div class="mt-1 text-center">
-                <p>
-                    <%= votes.length %>人
-                </p>
-            </div>
-        </div>
-    </div>
+                <%- include("../partials/contributePlace", { votes: votes}) %>
