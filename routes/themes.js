@@ -7,7 +7,7 @@ router.get("/place/a/:id", async (req, res) => {
     const { id } = req.params;
     const themes = await Theme.findById(id);
     const votes = await Vote.find({theme: themes.theme});
-    res.render("ogiri/separatePlace", { votes, themes, messages: req.flash("success") });
+    res.render("ogiri/separatePlace", { votes, themes});
 });
 
 router.patch("/place/a/:id", async (req, res) => {

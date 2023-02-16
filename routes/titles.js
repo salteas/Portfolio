@@ -7,7 +7,7 @@ router.get("/place/b/:id", async (req, res) => {
     const { id } = req.params;
     const titles = await Title.findById(id);
     const polls = await Poll.find({title: titles.title});
-    res.render("ogiri/separatePlaceb", { polls, titles, messages: req.flash("success") });
+    res.render("ogiri/separatePlaceb", { polls, titles});
 });
 
 router.patch("/place/b/:id", async (req, res) => {

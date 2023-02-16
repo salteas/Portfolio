@@ -60,9 +60,10 @@ app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
+
 app.use((req, res, next) => {
     res.locals.currentUser = req.user;
-    res.locals.success = req.flash("success");
+    res.locals.messages = req.flash("success");
     res.locals.error = req.flash("error");
     next();
 });
@@ -74,7 +75,7 @@ mongoose.set('useFindAndModify', false);
 app.get("/", async (req, res) => {
     const themes = await Theme.find({});
     const titles = await Title.find({});
-    res.render("ogiri/home", { themes, titles, messages: req.flash("success"), error: req.flash("error") });
+    res.render("ogiri/home", { themes, titles});
 });
 
 app.use("/oogiri", ThemesRoutes);
