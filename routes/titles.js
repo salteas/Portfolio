@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const Poll = require("./models/votedWorks");
-const Title = require("./models/title");
+const Poll = require("../models/votedWorks");
+const Title = require("../models/title");
 
 router.get("/place/b/:id", async (req, res) => {
     const { id } = req.params;

@@ -1,10 +1,9 @@
 const express = require("express");
 const router = express.Router();
-const Vote = require("./models/votedProducts");
-const Theme = require("./models/theme");
+const Vote = require("../models/votedProducts");
+const Theme = require("../models/theme");
 
 router.get("/place/a/:id", async (req, res) => {
-
     const { id } = req.params;
     const themes = await Theme.findById(id);
     const votes = await Vote.find({theme: themes.theme});
