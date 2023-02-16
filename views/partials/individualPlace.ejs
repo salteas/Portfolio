@@ -1,39 +1,45 @@
 <div class="card-body bg-light">
-    <p class="card-title p-font-title">投稿者：<%= allUser.length %>人</p>
-    <p class="card-title p-font-title">投票者：<%= user.votedpoints.length %>人</p>
+    <p class="card-title p-font"><b>投稿者：<%= allUser.length %>人</b></p>
+    <p class="card-title p-font"><b>投票者：<%= user.votedpoints.length %>人</b></p>
 </div>
 </div>
-<div class="card m-auto mt-4 shadow bg-body rounded" style="width: 80%;">
-<div class="mt-3 row">
-    <div class="col-12 text-center">
-        <p>
-            ボケ
-        </p>
-    </div>
-    <div class="col-12 text-center">
-        <p>
-            <%= user.joke %>
-            <br>（<%= user.username %>）
-        </p>
+<div class="card m-auto mt-4 shadow bg-body rounded" style="width: 90%;">
+    <div class="mt-3 row">
+        <div class="col-12 text-center">
+            <p class="p-font">
+                ボケ
+            </p>
+        </div>
+        <div class="col-12 text-center">
+            <p class="p-font">
+                <%= user.joke %>
+                    <br>（<%= user.username %>）
+            </p>
+        </div>
     </div>
 </div>
-</div>
-<div class="card m-auto mt-4 mb-5 bg-light shadow bg-body rounded" style="width: 80%;">
-<div class="row mt-3">
-    <div class="col-2 text-center">
-        <p class="p-font">点</p>
+<div class="card m-auto mt-4 mb-5 bg-light shadow bg-body rounded" style="width: 90%;">
+    <div style="width: 97%;">
+        <div class="row mt-3">
+            <div class="col-2 text-center">
+                <p class="p-font">点</p>
+            </div>
+            <div class="col-10 text-center">
+                <p class="p-font">投票者</p>
+            </div>
+            <% const voters=user.votedpoints.filter((num)=> num.votepoint !==0);
+                for(let voter of voters) { %>
+                <div class="col-2 text-center">
+                    <p class="p-font">
+                        <%= voter.votepoint %>点
+                    </p>
+                </div>
+                <div class="col-10 text-center">
+                    <p class="p-font">
+                        <%= voter.voteuser %>
+                    </p>
+                </div>
+                <% } %>
+        </div>
     </div>
-    <div class="col-10 text-center">
-        <p class="p-font">投票者</p>
-    </div>
-    <% const voters = user.votedpoints.filter((num) => num.votepoint !==0);
-    for(let voter of voters) {  %>
-        <div class="col-2 text-center">
-        <p class="p-font"><%= voter.votepoint %>点</p>
-    </div>
-    <div class="col-10 text-center">
-        <p class="p-font"><%= voter.voteuser %></p>
-    </div>
-    <% } %> 
-</div>
 </div>
