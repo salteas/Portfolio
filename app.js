@@ -75,8 +75,8 @@ app.get("/", async (req, res) => {
     res.render("ogiri/home", { themes, titles, messages: req.flash("success"), error: req.flash("error") });
 });
 
-app.user("/oogiri", ThemesRoutes);
-app.user("/oogiri", TitlesRoutes);
+app.use("/oogiri", ThemesRoutes);
+app.use("/oogiri", TitlesRoutes);
 
 app.get("/oogiri/past", async (req, res) => {
     const pastThemes = await Theme.find({});
