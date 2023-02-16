@@ -1,9 +1,9 @@
 <div class="mt-1 ms-2 me-2">
     <div class="left">
-        <p class="left-content">０票</p>
-        <p class="left-content">２票</p>
-        <p class="left-content">３票</p>
-        <p class="left-content">４票</p>
+        <p class="left-content p-font-joke">０票</p>
+        <p class="left-content p-font-joke">２票</p>
+        <p class="left-content p-font-joke">３票</p>
+        <p class="left-content p-font-joke">４票</p>
     </div>
 </div>
 <% for (let i=0; i < shuffleProduct.length; i ++) { if(i % 10===0 && i !==0){%>
@@ -26,9 +26,9 @@
                     <input type="radio" value="4" name="votepoint<%=[i]%>" id="high">
                 </div>
                 <div class="left-content-text ms-2">
-                    <span>
+                    <p class="p-font-joke">
                         <%= shuffleProduct[i].joke %>
-                    </span>
+                    </p>
                 </div>
             </div>
         </div>
@@ -54,7 +54,7 @@
             <div class="card-body">
 
                 <h5 class="card-title">投票していただいた方</h5>
-                <p class="card-text">
+                <p class="card-text p-font">
                     <% const pollusers=polledProducts[0].votedpoints; for(let polluser of pollusers) { %>
                         <%= polluser.voteuser %> /
                             <% } %>
@@ -67,9 +67,9 @@
             <div class="card m-auto mt-4 mb-5 bg-light shadow bg-body rounded" style="width: 80%;">
                 <div class="mt-3">
                     <div class="left">
-                        <p class="col-2 col-sm-1 text-center">順位</p>
-                        <p class="col-2 col-sm-1 text-center">得票数</p>
-                        <p class="col-8 col-sm-10 text-center">名前</p>
+                        <p class="col-2 col-sm-1 text-center p-font">順位</p>
+                        <p class="col-2 col-sm-1 text-center p-font">得票数</p>
+                        <p class="col-8 col-sm-10 text-center p-font">名前</p>
                     </div>
                 </div>
                 <% polledProducts.sort(function(a,b) { if(a.point> b.point) {
@@ -79,13 +79,13 @@
                         <div class="rank">
                             <div class="mt-3">
                                 <div class="left">
-                                    <p class="col-2 col-sm-1 text-center">
+                                    <p class="col-2 col-sm-1 text-center p-font">
                                         <%= i%>位
                                     </p>
-                                    <p class="col-2 col-sm-1 text-center">
+                                    <p class="col-2 col-sm-1 text-center p-font">
                                         <%= polledProduct.point%>
                                     </p>
-                                    <p class="col-8 col-sm-10 text-center">
+                                    <p class="col-8 col-sm-10 text-center p-font">
                                         <%= polledProduct.username%>
                                     </p>
                                 </div>
