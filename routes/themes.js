@@ -22,13 +22,13 @@ router.patch("/place/a/:id", async (req, res) => {
     if (joinUserName.includes(username)) {
         await Vote.findOneAndUpdate({ username: username, theme: themes.theme }, { joke: joke });
         req.flash("success", "投稿内容が変更されました");
-        res.redirect("/");
+        res.redirect(`/oogiri/place/a/${id}`);
     } else {
         const votedProducts = new Vote({ username, joke, theme: themes.theme });
         await votedProducts.save();
 
         req.flash("success", "投稿されました");
-        res.redirect("/");
+        res.redirect(`/oogiri/place/a/${id}`);
     }
 });
 
@@ -50,31 +50,31 @@ router.get("/vote/a/:id", async (req, res) => {
 });
 
 router.patch("/vote/a/:id", async (req, res) => {
-    const voteduser = req.body.username;
+    const votedUser = req.body.username;
     const { id } = req.params;
     const themes = await Theme.findById(id);
     const votedProducts = await Vote.find({theme: themes.theme});
-    const voteusers = votedProducts[0].votedpoints;
+    const voteUsers = votedProducts[0].votedpoints;
     const voteUserName = [];
-    const votepoint = Object.values(req.body);
-    for (let voteuser of voteusers) {
-        voteUserName.push(voteuser.voteuser);
+    const votePoint = Object.values(req.body);
+    for (let voteUser of voteUsers) {
+        voteUserName.push(voteUser.voteuser);
     }
-    if (voteUserName.includes(voteduser)) {
+    if (voteUserName.includes(votedUser)) {
         req.flash("error", "あなたはすでに投票しています");
-        res.redirect("/");
-    } else if (votepoint.indexOf("2") !== -1 || votepoint.indexOf("3") !== -1 || votepoint.indexOf("4") !== -1) {
+        res.redirect(`/oogiri/vote/a/${id}`);
+    } else if (votePoint.indexOf("2") !== -1 || votePoint.indexOf("3") !== -1 || votePoint.indexOf("4") !== -1) {
         for (let i = 0; i < votedProducts.length; i++) {
-            votedProducts[i].point = votedProducts[i].point + parseInt(votepoint[i]);
-            votedProducts[i].votedpoints.push({ voteuser: voteduser, votepoint: parseInt(votepoint[i]) });
+            votedProducts[i].point = votedProducts[i].point + parseInt(votePoint[i]);
+            votedProducts[i].votedpoints.push({ voteuser: votedUser, votepoint: parseInt(votePoint[i]) });
         }
         await Vote.deleteMany({});
         await Vote.insertMany(votedProducts);
          req.flash("success", "投票が完了しました");
-        res.redirect("/");
+        res.redirect(`/oogiri/vote/a/${id}`);
     } else {
         req.flash("error", "すべて0票で投票されています");
-        res.redirect("/");
+        res.redirect(`/oogiri/vote/a/${id}`);
     }
 });
 

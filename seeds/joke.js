@@ -1,11 +1,9 @@
 const mongoose = require("mongoose");
-const Joke = require("../models/product");
 const Vote = require("../models/votedProducts");
-const Work = require("../models/work");
 const Poll = require("../models/votedWorks");
 const Theme = require("../models/theme");
 const Title = require("../models/title");
-const theme = require("../models/theme");
+
 
 mongoose.connect('mongodb://127.0.0.1:27017/oogiri', { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
     .then(() => {
@@ -95,19 +93,6 @@ const votedJokes = [
 ];
 
 
-const seedDB = async () => {
-    await Joke.deleteMany({});
-    await Work.deleteMany({});
-    for (let i = 0; i < jokeSeed.length; i++) {
-        const products = new Joke({
-            username: `${jokeSeed[i].username}`,
-            theme: `${jokeSeed[i].theme}`,
-            joke: `${jokeSeed[i].joke}`
-        });
-        await products.save();
-    }
-};
-
 const seedDB2 = async () => {
     await Vote.deleteMany({});
     await Poll.deleteMany({});
@@ -137,10 +122,7 @@ const seedDB3 = async () => {
 };
 
 
-seedDB()
-    .then(() => {
-        seedDB2();
-    })
+seedDB2()
     .then(() => {
         seedDB3();
     })
